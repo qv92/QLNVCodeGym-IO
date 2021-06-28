@@ -252,7 +252,9 @@ public class QLNV {
             System.out.println("5.Sắp xếp nhân viên theo tên");
             System.out.println("6.Sắp xếp nhân viên theo doanh thu");
             System.out.println("7.Hiển thị toàn bộ nhân viên");
-            System.out.println("8.Thoát");
+            System.out.println("8.Ghi file");
+            System.out.println("9.Đọc file");
+            System.out.println("10.Thoát");
             int choice=Integer.parseInt(sc.nextLine());
             switch (choice){
                 case 1:
@@ -277,6 +279,12 @@ public class QLNV {
                     showNhanVien();
                     break;
                 case 8:
+                    ghiFile();
+                    break;
+                case 9:
+                    docFile();
+                    break;
+                case 10:
                     break;
             }
         }
