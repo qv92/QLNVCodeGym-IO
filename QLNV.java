@@ -216,7 +216,7 @@ public class QLNV {
 
     public static void docFile() throws IOException {
         try {
-            FileReader fileReader = new FileReader(nhanVien);
+            FileReader fileReader = new FileReader(nhanVien,true);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
