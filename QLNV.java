@@ -3,7 +3,7 @@ import java.util.*;
 
 public class QLNV {
     static ArrayList<NhanVien> list = new ArrayList<>();
-    static File nhanVien = new File("qlnv.txt");
+    static File nhanVien = new File("D:\\QuanLyNhanVienCodegym\\src\\qlnv.txt");
     static Scanner sc= new Scanner(System.in);
     public static String nhapTen(){
         System.out.println("Nhập tên nhân viên");
@@ -200,8 +200,7 @@ public class QLNV {
         }}
     public static void ghiFile() {
         try{
-            File file = new File("D:\\QuanLyNhanVienCodegym\\src\\qlnv.txt");
-            FileWriter fileWriter = new FileWriter(file);
+            FileWriter fileWriter = new FileWriter(nhanVien);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (NhanVien nhanvien:list) {
                 bufferedWriter.write(nhanvien.toString());
@@ -217,8 +216,7 @@ public class QLNV {
 
     public static void docFile() throws IOException {
         try {
-            File file = new File("D:\\QuanLyNhanVienCodegym\\src\\qlnv.txt");
-            FileReader fileReader = new FileReader(file);
+            FileReader fileReader = new FileReader(nhanVien);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
@@ -287,5 +285,3 @@ public class QLNV {
         }
     }
 }
-
-   
