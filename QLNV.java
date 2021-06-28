@@ -200,22 +200,23 @@ public class QLNV {
                     break;
             }if (choice==3) break;
         }}
-    public static void ghiFile() throws IOException {
-        BufferedWriter bufferedWriter = null;
-        try {
-            FileWriter fileWriter = new FileWriter(nhanVien);
-            bufferedWriter = new BufferedWriter(fileWriter);
-
-            for (NhanVien nv : list) {
-                bufferedWriter.write(nv.toString());
-                bufferedWriter.newLine();
+    public static void ghiFile() {
+        try{
+            File file = new File("D:\\QuanLyNhanVienCodegym\\src\\qlnv.txt");
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (NhanVien nhanvien:list) {
+                bufferedWriter.write(nhanvien.toString());
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
             bufferedWriter.close();
         }
+        catch (Exception e){
+            System.out.println("Lỗi");
+        }
+
+
     }
+
     public static void docFile() throws IOException {
         BufferedReader bufferedReader = null;
         try {
@@ -243,7 +244,7 @@ public class QLNV {
 
     }
 
-    public static void menu(){
+    public static void menu() throws IOException {
         while (true){
             System.out.println("1.Thêm nhân viên");
             System.out.println("2.Đuổi nhân viên");
