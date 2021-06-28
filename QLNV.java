@@ -1,8 +1,6 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
+
 public class QLNV {
     static ArrayList<NhanVien> list = new ArrayList<>();
     static File nhanVien = new File("qlnv.txt");
@@ -218,30 +216,28 @@ public class QLNV {
     }
 
     public static void docFile() throws IOException {
-        BufferedReader bufferedReader = null;
         try {
-            FileReader fileReader = new FileReader(nhanVien);
-            bufferedReader = new BufferedReader(fileReader);
+            File file = new File("D:\\QuanLyNhanVienCodegym\\src\\qlnv.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
                 String[] str = line.split(",");
-                if (str.length >= 10 && str.toString().contains("NVFullTime")) {
-                    list.add(new NhanVienFullTime(str[0], Integer.parseInt(str[1].trim()), str[2], str[3], str[4],Double.parseDouble(str[5].trim()),str[6]));
+//                System.out.println(Arrays.toString(str));
+                if (str.length == 8 && Arrays.toString(str).contains("NVFullTime")) {
+                    list.add(new NhanVienFullTime(str[1], Integer.parseInt(str[2].trim()), str[3], str[4], str[5],Double.parseDouble(str[6].trim()),str[7]));
                 }
-                if(str.length>=10 && str.toString().contains("NVPartTime")){
-                    list.add(new NhanVienPartTime(str[0],Integer.parseInt(str[1]),str[2],str[3],str[4],Double.parseDouble(str[5]),str[6],Double.parseDouble(str[7])));
+                if(str.length==9 && Arrays.toString(str).contains("NVPartTime")){
+                    list.add(new NhanVienPartTime(str[1],Integer.parseInt(str[2]),str[3],str[4],str[5],Double.parseDouble(str[6]),str[7],Double.parseDouble(str[8])));
                 }
-                if(str.length>=10 && str.toString().contains("NVTuyenSinh")){
-                    list.add(new NhanVienTuyenSinh(str[0], Integer.parseInt(str[1].trim()), str[2], str[3], str[4],Double.parseDouble(str[5].trim()),Integer.parseInt(str[6])));
+                if(str.length==8 && Arrays.toString(str).contains("NVTuyenSinh")){
+                    list.add(new NhanVienTuyenSinh(str[1], Integer.parseInt(str[2].trim()), str[3], str[4], str[5],Double.parseDouble(str[6].trim()),Integer.parseInt(str[7])));
                 }
             }
+            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            bufferedReader.close();
         }
-
-
     }
 
     public static void menu() throws IOException {
@@ -291,3 +287,5 @@ public class QLNV {
         }
     }
 }
+
+   
